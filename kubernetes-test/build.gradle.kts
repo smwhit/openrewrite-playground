@@ -15,10 +15,14 @@ java {
 
 repositories {
 	mavenCentral()
+	maven {
+		url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+	}
 }
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter")
+	testImplementation("org.openrewrite.recipe:rewrite-kubernetes:latest.integration")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }

@@ -1,13 +1,16 @@
 initscript {
     repositories {
-        maven { url "https://plugins.gradle.org/m2" }
+        maven {
+            url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
+            url "https://plugins.gradle.org/m2" }
     }
-    dependencies { classpath("org.openrewrite:plugin:6.16.4") }
+    dependencies { classpath("org.openrewrite:plugin:latest.integration") }
 }
 rootProject {
     plugins.apply(org.openrewrite.gradle.RewritePlugin)
     dependencies {
-        rewrite("org.openrewrite.recipe:rewrite-kubernetes:2.7.1")
+//        rewrite("org.openrewrite.recipe:rewrite-kubernetes:2.7.1")
+        rewrite("org.openrewrite.recipe:rewrite-kubernetes:latest.integration")
     }
     rewrite {
         activeRecipe("org.openrewrite.kubernetes.KubernetesBestPractices")
